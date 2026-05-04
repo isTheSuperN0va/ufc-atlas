@@ -23,7 +23,11 @@ fetch("/salas.json").then(response => response.json()).then((dados: TYPE.DadosSa
 })
 
 
-
+//TODO:
+// Remover roomviewer, é inutil com a nova idea
+// Dar uma arrumada melhor nos modulos
+// Terminar o mapeamento do proximo bloco
+// Adicionar os nomes de todas as salas(?)
 
 
 

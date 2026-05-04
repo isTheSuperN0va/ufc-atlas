@@ -14,8 +14,11 @@
 
 
     <svg id="map">
-      <polygon class="floor" points="-200,0 728,0 728,560 -200,560" style="fill:rgb(211, 221, 211);"/>
-      <polygon class="floor" points="0,210 0,347 674,347 674,210" style="fill:rgb(65, 233, 65);"/>
+      <pattern id="hachura" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="8" stroke="hsl(100, 60%, 60%)" stroke-width="10"/>
+      </pattern>
+      <polygon class="floor" class="cement" points="-200,0 728,0 728,560 -200,560" style="fill:rgb(211, 221, 211);"/>
+      <polygon class="floor" class="grass" points="0,210 0,347 674,347 674,210" fill="url(#hachura)"/>
       
 
     </svg>
@@ -56,6 +59,12 @@
     </div>
 
     <div id="app"></div>
+
+    <div id="buttonsHigh">
+      <button> <p>Up</p> </button>
+      <button> <p>Down</p> </button>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/mapa.ts"></script>
     <script type="module" src="/src/ui.ts"></script>
