@@ -1,18 +1,17 @@
 import * as UI from "./ui.ts";
 import * as TYPE from "./types.ts"
+import * as UTIL from "./util.ts"
 
 
-fetch("/salas.json").then(response => response.json()).then((dados: TYPE.DadosSalas) => {
-    TYPE.ReceberDados(dados);
-    console.log(dados);
+fetch("/salas.json").then(response => response.json()).then((dados: TYPE.DadosInput) => {
+    const salas: (TYPE.Sala | null)[] = TYPE.FabricarSalas(dados.salas);
+    const instalacoes: (TYPE.Sala | null)[] = TYPE.FabricarSalas(dados.Instalacoes);
 
-    dados?.salas.forEach(sala => {
-      UI.AddSalaMapa(sala);
-    });
+    if (!UTIL.hasNoNull(salas)) return;
+    if (!UTIL.hasNoNull(instalacoes)) return;
 
-    dados?.nsalas.forEach(n_sala => {
-      UI.AddNSalaMapa(n_sala)
-    })
+    UI.RenderizarSalas(salas);
+    UI.RenderizarSalas(instalacoes);
 
     UI.AddSalas(dados);
 

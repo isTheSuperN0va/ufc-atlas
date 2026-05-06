@@ -20,15 +20,6 @@ export function FormatViewer(sala: TYPE.Sala): void {
   TYPE.rvTitle.textContent = `Sala ${sala.id}`;
 }
 
-export function AddSalaMapa(sala: TYPE.Sala): void {
-  const novaSala: SVGRectElement = CriarElementoSala(sala.tam[0], sala.tam[1], sala.pos[0], sala.pos[1]);
-  novaSala.setAttribute("data-room-id", String(sala.id));
-  novaSala.classList.add("room");
-
-  TYPE.mapa.insertAdjacentElement("beforeend"  , novaSala);
-
-}
-
 export function AddSalas(dados: TYPE.DadosSalas): void {
   var rooms = document.getElementsByClassName("room") as HTMLCollectionOf<SVGRectElement>
 
@@ -44,12 +35,12 @@ export function AddSalas(dados: TYPE.DadosSalas): void {
     return;
 }
 
+export function RenderizarSalas(salas: TYPE.Sala[]) {
+  salas.forEach(sala => {
+    sala.renderizar();
+    TYPE.mapa.insertAdjacentElement("beforeend", sala.elemento);
+  })
 
-export function AddNSalaMapa(dados: TYPE.NSala) {
-  const nova_sala: SVGRectElement = CriarElementoSala(dados.tam[0], dados.tam[1], dados.pos[0], dados.pos[1]);
-  nova_sala.setAttribute("data-room-name", String(dados.nome));
-
-  TYPE.mapa.insertAdjacentElement("beforeend", nova_sala);
 }
 
 export function ConfigMenuHighlight(rooms: Array<HTMLElement>, dados: TYPE.DadosSalas) {
