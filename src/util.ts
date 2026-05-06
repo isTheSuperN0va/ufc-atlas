@@ -13,6 +13,6 @@ export function CriarElementoSala(largura: number, altura:number, x: number, y: 
 
 } 
 
-export function hasNull<T>(array: (T | null)[]): array is T[] {
+export function hasNoNull<T>(array: (T | null)[]): array is T[] {
   return array.every(x => x !== null);
 }
