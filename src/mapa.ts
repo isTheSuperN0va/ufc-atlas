@@ -65,12 +65,16 @@ function HandleZoom(event: WheelEvent) {
 
 
 
+export function InitMapControls() {
+  // Zoom Controls
+  TYPE.mapa.addEventListener("wheel", (event) => { HandleZoom(event); });
+
+  // Grab Controls
+  TYPE.mapa.addEventListener("mousedown", (event) => { AnchorMouse(event); });
+  TYPE.mapa.addEventListener("mouseup", () => { isDragging = false; });
+  TYPE.mapa.addEventListener("mousemove", (event) => { CalcGrabVector(event); });
+
+  TYPE.mapa.setAttribute("viewBox", `${cam_x} ${cam_y} ${zoom} ${zoom}`);
+}
 
 
-
-TYPE.mapa.addEventListener("wheel", (event) => { HandleZoom(event); });
-
-TYPE.mapa.addEventListener("mousedown", (event) => { AnchorMouse(event); });
-TYPE.mapa.addEventListener("mouseup", () => { isDragging = false; });
-TYPE.mapa.addEventListener("mousemove", (event) => { CalcGrabVector(event); });
-TYPE.mapa.setAttribute("viewBox", `${cam_x} ${cam_y} ${zoom} ${zoom}`);

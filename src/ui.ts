@@ -1,5 +1,4 @@
 import * as TYPE from "./types.ts";
-import { CriarElementoSala } from "./util.ts";
 
 export var roomView: boolean = false;
 const hMenuOffset = 12;
@@ -36,42 +35,40 @@ const hMenuOffset = 12;
 //     return;
 // }
 
-export function RenderizarSalas(salas: TYPE.Sala[]) {
-  salas.forEach(sala => {
-    sala.renderizar();
-    TYPE.mapa.insertAdjacentElement("beforeend", sala.elemento);
+export function RenderRooms(rooms: TYPE.Sala[]) {
+  rooms.forEach(room => {
+    room.renderizar();
+    TYPE.mapa.insertAdjacentElement("beforeend", room.elemento);
     console.log("fnseu")
   })
 
 }
 
-export function ConfigMenuHighlight(salas: TYPE.Sala[]) {
-  salas.forEach(sala => {
-      sala.elemento.addEventListener("mousemove", (event) => { UpdateHMenuPos(event) })
-      sala.elemento.addEventListener("mouseover", () => { OnRoomMouseOver(sala); });
-      sala.elemento.addEventListener("mouseleave", () => { OnRoomMouseLeave(); });  
+export function ConfigMenuHighlight(rooms: TYPE.Sala[]) {
+  rooms.forEach(room => {
+      room.elemento.addEventListener("mousemove", (event) => { UpdateHMenuPos(event) })
+      room.elemento.addEventListener("mouseover", () => { OnRoomMouseOver(room); });
+      room.elemento.addEventListener("mouseleave", () => { OnRoomMouseLeave(); });  
   })
 }
 
-export function OnRoomMouseOver(sala: TYPE.Sala) {
+function OnRoomMouseOver(room: TYPE.Sala) {
   TYPE.highlightMenu.classList.add("active");
   const roomName: HTMLElement = document.createElement("p");
-  roomName.textContent = GetRoomName(sala);
+  roomName.textContent = GetRoomName(room);
   TYPE.highlightMenu.insertAdjacentElement("beforeend", roomName);
-
-
   
 }
 
-// possivelmente desnecessario
-function GetRoomName(sala: TYPE.Sala): string {
-  if (sala instanceof TYPE.SalaAula) { return `${sala.prefixo} ${sala.id}`; }
-  if (sala instanceof TYPE.Instalacao) { return sala.nome; }
+// possivelmente desnecessario. mover pra utils?
+function GetRoomName(room: TYPE.Sala): string {
+  if (room instanceof TYPE.SalaAula) { return `${room.prefixo} ${room.id}`; }
+  if (room instanceof TYPE.Instalacao) { return room.nome; }
 
   return "undefined";
 }
 
-export function OnRoomMouseLeave() {
+function OnRoomMouseLeave() {
   TYPE.highlightMenu.replaceChildren();
 }
 
