@@ -1,78 +1,93 @@
 {
-    "salas": [
-        { 
+    "instalacoes": [
+        {
+            "tipo": "instalacao",
             "nome":"Escada",   
             "pos": [599, 225], 
             "tam": [75, 115] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"Escada",   
             "pos": [-195, 0],  
             "tam": [145, 145] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"Banheiro", 
             "pos": [-195, 70], 
             "tam": [145, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"Banheiro", 
             "pos": [728, 0],   
             "tam": [168, 100] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"Banheiro", 
             "pos": [728, 100], 
             "tam": [168, 100] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"Banheiro", 
             "pos": [728, 347], 
             "tam": [146, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"Banheiro", 
             "pos": [728, 417], 
             "tam": [146, 149] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"?", 
             "pos": [728, 567], 
             "tam": [146, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"?", 
             "pos": [728, 567], 
             "tam": [146, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"?", 
             "pos": [728, 637], 
             "tam": [146, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"?", 
             "pos": [728, 707], 
             "tam": [146, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"?", 
             "pos": [728, 777], 
             "tam": [146, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"?", 
             "pos": [728, 847], 
             "tam": [146, 70] 
         },
-        { 
+        {
+            "tipo": "instalacao", 
             "nome":"?", 
             "pos": [728, 917], 
             "tam": [146, 70] 
         }
     ],
-    "instalacoes": [
+    "salas": [
         {
+            "tipo": "instalacao",
             "id": 1,
             "prefixo": "Sala",
             "pos": [0, 0],
@@ -93,6 +108,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 2,
             "prefixo": "Sala",
             "pos": [170, 0],
@@ -113,6 +129,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 3,
             "prefixo": "Sala",
             "pos": [340, 0],
@@ -133,6 +150,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 4,
             "prefixo": "Sala",
             "pos": [510, 0],
@@ -153,6 +171,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 5,
             "prefixo": "Sala",
             "pos": [0, 392],
@@ -173,6 +192,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 6,
             "prefixo": "Sala",
             "pos": [170, 392],
@@ -193,6 +213,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 7,
             "prefixo": "Sala",
             "pos": [340, 392],
@@ -213,6 +234,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 8,
             "prefixo": "Sala",
             "pos": [510, 392],
@@ -233,6 +255,7 @@
             ]
         },
         {
+            "tipo": "instalacao",
             "id": 1,
             "prefixo": "Sala",
             "pos": [-195, 150],
@@ -241,6 +264,7 @@
 
         },
         {
+            "tipo": "instalacao",
             "id": 2,
             "prefixo": "Sala",
             "pos": [-195, 340],

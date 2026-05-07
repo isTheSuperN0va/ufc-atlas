@@ -5,7 +5,7 @@ import * as UTIL from "./util.ts"
 
 fetch("/salas.json").then(response => response.json()).then((dados: TYPE.DadosInput) => {
     const salas: (TYPE.Sala | null)[] = TYPE.FabricarSalas(dados.salas);
-    const instalacoes: (TYPE.Sala | null)[] = TYPE.FabricarSalas(dados.Instalacoes);
+    const instalacoes: (TYPE.Sala | null)[] = TYPE.FabricarSalas(dados.instalacoes);
 
     if (!UTIL.hasNoNull(salas)) return;
     if (!UTIL.hasNoNull(instalacoes)) return;
@@ -13,10 +13,10 @@ fetch("/salas.json").then(response => response.json()).then((dados: TYPE.DadosIn
     UI.RenderizarSalas(salas);
     UI.RenderizarSalas(instalacoes);
 
-    UI.AddSalas(dados);
+    // UI.AddSalas(dados);
 
-    const roomsElements = Array.from(document.getElementsByClassName("room")) as Array<HTMLElement>;
-    UI.ConfigMenuHighlight(roomsElements, dados);
+    UI.ConfigMenuHighlight(salas);
+    UI.ConfigMenuHighlight(instalacoes);
 
     
 })
@@ -27,6 +27,7 @@ fetch("/salas.json").then(response => response.json()).then((dados: TYPE.DadosIn
 // Dar uma arrumada melhor nos modulos
 // Terminar o mapeamento do proximo bloco
 // Adicionar os nomes de todas as salas(?)
+// Substituir narrowing por propriedado de "tipo"? possivelmente por typeof
 
 
 

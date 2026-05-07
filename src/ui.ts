@@ -4,67 +4,71 @@ import { CriarElementoSala } from "./util.ts";
 export var roomView: boolean = false;
 const hMenuOffset = 12;
 
-export function Room_Viewer(state: boolean): void {
 
-  if (state)
-    TYPE.roomViewer.classList.add("active");
+// export function Room_Viewer(state: boolean): void {
 
-  if (!state)
-    TYPE.roomViewer.classList.remove("active");
+//   if (state)
+//     TYPE.roomViewer.classList.add("active");
+
+//   if (!state)
+//     TYPE.roomViewer.classList.remove("active");
   
-  roomView = state;
-  return;
-}
+//   roomView = state;
+//   return;
+// }
 
-export function FormatViewer(sala: TYPE.Sala): void {
-  TYPE.rvTitle.textContent = `Sala ${sala.id}`;
-}
+// export function FormatViewer(sala: TYPE.Sala): void {
+//   TYPE.rvTitle.textContent = `Sala ${sala.id}`;
+// }
 
-export function AddSalas(dados: TYPE.DadosSalas): void {
-  var rooms = document.getElementsByClassName("room") as HTMLCollectionOf<SVGRectElement>
+// export function AddSalas(dados: TYPE.DadosSalas): void {
+//   var rooms = document.getElementsByClassName("room") as HTMLCollectionOf<SVGRectElement>
 
-  Array.from(rooms).forEach((room) => {
-    room.addEventListener("click", (event) => { 
-      event.stopPropagation();
-      Room_Viewer(true);
-      let salaAFormatar = dados.salas[Number(room.dataset.roomId) - 1]
-      FormatViewer(salaAFormatar); 
-    });
-  })
+//   Array.from(rooms).forEach((room) => {
+//     room.addEventListener("click", (event) => { 
+//       event.stopPropagation();
+//       Room_Viewer(true);
+//       let salaAFormatar = dados.salas[Number(room.dataset.roomId) - 1]
+//       FormatViewer(salaAFormatar); 
+//     });
+//   })
 
-    return;
-}
+//     return;
+// }
 
 export function RenderizarSalas(salas: TYPE.Sala[]) {
   salas.forEach(sala => {
     sala.renderizar();
     TYPE.mapa.insertAdjacentElement("beforeend", sala.elemento);
+    console.log("fnseu")
   })
 
 }
 
-export function ConfigMenuHighlight(rooms: Array<HTMLElement>, dados: TYPE.DadosSalas) {
-  rooms.forEach(room => {
-      room.addEventListener("mousemove", (event) => { UpdateHMenuPos(event) })
-      room.addEventListener("mouseover", (event) => { OnRoomMouseOver(room, dados); });
-      room.addEventListener("mouseleave", () => { OnRoomMouseLeave(); });  
+export function ConfigMenuHighlight(salas: TYPE.Sala[]) {
+  salas.forEach(sala => {
+      sala.elemento.addEventListener("mousemove", (event) => { UpdateHMenuPos(event) })
+      sala.elemento.addEventListener("mouseover", () => { OnRoomMouseOver(sala); });
+      sala.elemento.addEventListener("mouseleave", () => { OnRoomMouseLeave(); });  
   })
 }
 
-export function OnRoomMouseOver(room: HTMLElement, dados: TYPE.DadosSalas) {
+export function OnRoomMouseOver(sala: TYPE.Sala) {
   TYPE.highlightMenu.classList.add("active");
-
-  const idSala: number = Number(room.dataset.roomId);
-  const sala: TYPE.Sala = dados.salas[idSala];
-
   const roomName: HTMLElement = document.createElement("p");
-  
-
-  roomName.textContent = `${sala.prefixo} ${idSala}`;
+  roomName.textContent = GetRoomName(sala);
   TYPE.highlightMenu.insertAdjacentElement("beforeend", roomName);
 
 
   
+}
+
+// possivelmente desnecessario
+function GetRoomName(sala: TYPE.Sala): string {
+  if (sala instanceof TYPE.SalaAula) { return `${sala.prefixo} ${sala.id}`; }
+  if (sala instanceof TYPE.Instalacao) { return sala.nome; }
+
+  return "undefined";
 }
 
 export function OnRoomMouseLeave() {
@@ -77,9 +81,11 @@ function UpdateHMenuPos(event: MouseEvent) {
 }
 
 
-document.addEventListener("click", (event: MouseEvent) => {
-    if (!TYPE.roomViewer.contains(event.target as Node) && roomView) {
-      Room_Viewer(true);
-    }
-})
+
+
+// document.addEventListener("click", (event: MouseEvent) => {
+//     if (!TYPE.roomViewer.contains(event.target as Node) && roomView) {
+//       Room_Viewer(true);
+//     }
+// })
 

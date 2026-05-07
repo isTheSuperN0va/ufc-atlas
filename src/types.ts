@@ -24,8 +24,8 @@ export class SalaAula implements Sala {
 
   public elemento: SVGRectElement;
   
-  constructor(private id: number = 0,
-              private prefixo: string = "",
+  constructor(public id: number = 0,
+              public prefixo: string = "",
               private pos: [x: number, y: number] = [0, 0],
               private tam: [largura: number, altura: number] = [0, 0],
               private cronograma: (Cadeira | null)[][] = [[null]]
@@ -43,7 +43,7 @@ export class SalaAula implements Sala {
 export class Instalacao implements Sala {
   public elemento: SVGRectElement;
 
-  constructor(private nome: string = "Instalação",
+  constructor(public nome: string = "Instalação",
               private pos: [x: number, y: number] = [0, 0],
               private tam: [largura: number, altura: number] = [0, 0],
               ) {
@@ -80,8 +80,8 @@ export function FabricarSalas(salas: InstalacaoInput[] | SalaAulaInput[]): (Sala
 }
 
 export type DadosInput = {
-  salas: SalaAulaInput[],
-  Instalacoes: InstalacaoInput[]
+  instalacoes: InstalacaoInput[],
+  salas: SalaAulaInput[]
 }
 
 
